@@ -1,0 +1,56 @@
+# Environment variables
+.env/
+venv/
+.venv/
+env/
+
+#API file
+.env
+GraphRag/lib/
+
+# Python cache files
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Keep directory structure
+
+GraphRag/chroma_data/*
+GraphRag/.DS_Store
+GraphRag/data/.DS_Store
+GraphRag/data/raw/.DS_Store
+GraphRag/src/.DS_Store
+!GraphRag/data/raw/umls/.gitkeep
+!GraphRag/data/processed/.gitkeep
+GraphRag/kg_evaluation_enhanced/
+GraphRag/kg_evaluation_llama2_7b/
+GraphRag/usmle_evaluation_results/
+GraphRag/data/processed/
+GraphRag/chroma_data/
+GraphRag/**/__pycache__/
+GraphRag/data/raw/umls/*.RRF
+GraphRag/data/raw/umls/MRCONSO.RRF
+GraphRag/data/raw/umls/MRDEF.RRF
+GraphRag/data/raw/umls/MRREL.RRF
+GraphRag/data/raw/umls/MRSTY.RRF
+GraphRag/data/raw/umls/MRHIER.RRF
+GraphRag/data/raw/umls/MRSAT.RRF
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# MedQA dataset
+GraphRag/data/raw/processed/medqa/
+
+# Notebooks
+GraphRag/notebooks/
+
+
+
+
