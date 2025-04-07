@@ -30,6 +30,9 @@ This project leverages Graph and Retrieval Augmented Generation (GraphRAG) to en
 - OpenAI API key
 - Pinecone account and API key
 - UMLS data files (for knowledge graph construction)
+- Link:https://www.nlm.nih.gov/research/umls/index.html
+- Medqa textbook dataset (for Vector store construction)
+- Link:https://github.com/jind11/MedQA/tree/master?tab=readme-ov-file
 
 ## Installation
 
