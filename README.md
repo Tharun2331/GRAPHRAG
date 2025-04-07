@@ -1,6 +1,6 @@
 # GraphRAG: Knowledge Graph-Based Question Answering for United States Medical Licensing Examination Style Questions.
 
-GraphRAG is an advanced question-answering system built specifically to Reduce Large Language Models Hallucination. The system combines knowledge graph-based information and vector-based retrieval with large language models to provide comprehensive, evidence-based answers to complex medical questions.
+GraphRAG is an advanced question-answering system built specifically to reduce Large Language Models Hallucination. The system combines knowledge graph-based information and vector-based retrieval with large language models to provide comprehensive, evidence-based answers to complex medical questions.
 
 ## Overview
 
