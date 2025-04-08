@@ -20,6 +20,8 @@ This project leverages Graph and Retrieval Augmented Generation (GraphRAG) to en
 - **Knowledge Graph Integration**: Neo4j-based medical knowledge graph built from UMLS data
 - **Vector Database**: Pinecone vector store for efficient retrieval of relevant textbook passages
 - **Multi-Modal Answering**: Compare answers from different approaches to understand reasoning
+- **Multihop paths reasoning**: Traverses complex relationships in the knowledge graph to identify indirect connections between medical concepts, enabling discovery of non-obvious causal relationships and treatment pathways that       
+  single-hop retrieval would miss
 - **Interactive UI**: Streamlit-based web interface for easy interaction
 - **Comprehensive Evaluation**: Built-in metrics for answer quality and evidence assessment
 
