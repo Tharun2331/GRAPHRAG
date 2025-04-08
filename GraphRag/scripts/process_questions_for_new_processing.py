@@ -159,7 +159,7 @@ class USMLEQuestionProcessor:
             # Filter out invalid results
             valid_results = [r for r in results if r and 'source_name' in r and 'relationship_type' in r and 'target_name' in r]
             return valid_results
-                except Exception as e:
+        except Exception as e:
             logger.error(f"Relationship search error: {str(e)}")
             return []
     def _generate_answer(self, question: str, concepts: List[Dict], relationships: List[Dict]) -> str:
@@ -299,15 +299,15 @@ class USMLEQuestionProcessor:
                 
                 try:
                     # Group relationships by type
-        rel_by_type = {}
-        for rel in relationships:
+                    rel_by_type = {}
+                    for rel in relationships:
                         if not isinstance(rel, dict):
                             continue
-            rel_type = rel.get('relationship_type', 'Unknown')
-            if rel_type not in rel_by_type:
-                rel_by_type[rel_type] = []
-            rel_by_type[rel_type].append(rel)
-        
+                        rel_type = rel.get('relationship_type', 'Unknown')
+                        if rel_type not in rel_by_type:
+                            rel_by_type[rel_type] = []
+                        rel_by_type[rel_type].append(rel)
+                
                     if rel_by_type:
                         # Sort relationship types by number of relationships and take top 5
                         sorted_rel_types = sorted(
@@ -323,7 +323,7 @@ class USMLEQuestionProcessor:
                                 source = rel.get('source_name', 'Unknown')
                                 target = rel.get('target_name', 'Unknown')
                                 print(f"   └─ {source} → {target}")
-            if len(rels) > 5:
+                            if len(rels) > 5:
                                 print(f"   └─ ... and {len(rels) - 5} more")
                         
                         # Show how many relationship types were not displayed
@@ -335,7 +335,7 @@ class USMLEQuestionProcessor:
                 except Exception as e:
                     logger.error(f"Error processing relationships: {str(e)}")
                     print("\nError processing relationships")
-        else:
+            else:
                 print("\nNo relationships found")
             
             print("\n" + "="*50)

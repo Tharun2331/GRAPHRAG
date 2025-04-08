@@ -289,6 +289,61 @@ def main():
                     st.write(f"Showing top 20 of {len(relationships)} relationships")
                 else:
                     st.write("No relationships retrieved.")
+                
+                # New Section: Multihop Paths
+                st.markdown("### Multihop Paths")
+                multihop_paths = result['kg_results'].get('multihop_paths', [])
+                if multihop_paths:
+                    # Create a DataFrame to display the paths in a tabular format
+                    path_data = []
+                    for i, path in enumerate(multihop_paths):
+                        # Check if path is a dictionary with structured data
+                        if isinstance(path, dict):
+                            path_data.append({
+                                "Path #": i+1,
+                                "Source": path.get('source_term', 'Unknown'),
+                                "Target": path.get('target_term', 'Unknown'),
+                                "Length": path.get('path_length', 'N/A'),
+                                "Description": path.get('path_description', 'N/A'),
+                                "Relevance": f"{path.get('relevance_score', 0):.3f}"
+                            })
+                        # If it's just a list of nodes
+                        elif isinstance(path, list):
+                            path_data.append({
+                                "Path #": i+1,
+                                "Path": " → ".join(path)
+                            })
+                    
+                    if path_data:
+                        # Display as a DataFrame
+                        st.dataframe(pd.DataFrame(path_data))
+                        st.write(f"Showing {len(path_data)} multihop paths")
+                        
+                        # Optionally add a more detailed view for a few top paths
+                        st.markdown("#### Top Path Details")
+                        for i, path in enumerate(multihop_paths[:3]):  # Show top 3 paths
+                            if isinstance(path, dict):
+                                st.markdown(f"**Path {i+1}:** {path.get('source_term', '')} → {path.get('target_term', '')}")
+                                st.markdown(f"**Description:** {path.get('path_description', 'N/A')}")
+                                
+                                # If path_nodes and path_rels are available, display the full path
+                                if 'path_nodes' in path and 'path_rels' in path:
+                                    nodes = path.get('path_nodes', [])
+                                    rels = path.get('path_rels', [])
+                                    
+                                    if nodes and len(nodes) > 1:
+                                        full_path = []
+                                        for j in range(len(nodes)-1):
+                                            full_path.append(f"({nodes[j]})-[{rels[j]}]->")
+                                        full_path.append(f"({nodes[-1]})")
+                                        st.markdown(f"**Full Path:** {''.join(full_path)}")
+                                
+                                st.markdown(f"**Relevance Score:** {path.get('relevance_score', 0):.3f}")
+                                st.markdown("---")
+                    else:
+                        st.write("No structured path data available.")
+                else:
+                    st.write("No multihop paths found.")
             
             # Tab 3: Textbook Passages
             with tabs[2]:
